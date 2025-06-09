@@ -1,0 +1,19 @@
+﻿{
+  "name": "firebase-auth-frontend",
+  "version": "1.0.0",
+  "description": "Simple HTML/CSS/JS frontend for testing Firebase authentication",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve . -l 8000",
+    "dev": "npx live-server --port=8000",
+    "build": "echo 'No build needed for static HTML'",
+    "deploy": "echo 'Deploy to your preferred hosting service'"
+  },
+  "keywords": ["firebase", "auth", "frontend", "html", "css", "javascript"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  }
+}

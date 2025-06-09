@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Auth Test Frontend</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Firebase Authentication Test</h1>
+        
+        <!-- Status Display -->
+        <div id="status" class="status"></div>
+        
+        <!-- Authentication Forms -->
+        <div class="auth-section">
+            <div class="form-container">
+                <h2>Register New User</h2>
+                <form id="registerForm">
+                    <input type="email" id="registerEmail" placeholder="Email" required>
+                    <input type="password" id="registerPassword" placeholder="Password (min 6 chars)" required>
+                    <input type="text" id="registerDisplayName" placeholder="Display Name (optional)">
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+            
+            <div class="form-container">
+                <h2>Login User</h2>
+                <form id="loginForm">
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- User Profile Section -->
+        <div id="profileSection" class="profile-section" style="display: none;">
+            <h2>User Profile</h2>
+            <div id="profileData"></div>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+            <button id="getProfileBtn" class="profile-btn">Refresh Profile</button>
+        </div>
+        
+        <!-- Response Display -->
+        <div class="response-section">
+            <h3>API Responses</h3>
+            <pre id="responseDisplay"></pre>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
