@@ -103,15 +103,68 @@ button {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-button:hover {
+button:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-button:active {
+button:active:not(:disabled) {
     transform: translateY(0);
 }
 
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Google Sign-in Button */
+.google-auth {
+    margin-top: 20px;
+}
+
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #dee2e6;
+}
+
+.divider span {
+    background: #f8f9fa;
+    padding: 0 15px;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.google-btn {
+    width: 100%;
+    background: white;
+    color: #5f6368;
+    border: 1px solid #dadce0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+}
+
+.google-btn:hover:not(:disabled) {
+    background: #f8f9fa;
+    border-color: #dadce0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Profile Section */
 .profile-section {
     background: #e8f5e8;
     padding: 25px;
@@ -129,21 +182,108 @@ button:active {
     background: white;
     padding: 15px;
     border-radius: 6px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-family: 'Courier New', monospace;
     white-space: pre-wrap;
     border: 1px solid #c3e6cb;
+    font-size: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Notification Settings */
+.notification-settings {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #c3e6cb;
+}
+
+.notification-settings h3 {
+    color: #155724;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.switch-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #28a745;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #28a745;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.switch-label {
+    font-size: 16px;
+    color: #495057;
+    font-weight: 500;
+}
+
+/* Profile Actions */
+.profile-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .logout-btn {
     background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-    margin-right: 10px;
 }
 
 .profile-btn {
     background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
 }
 
+/* Response Section */
 .response-section {
     background: #f8f9fa;
     padding: 20px;
@@ -170,6 +310,16 @@ button:active {
     word-wrap: break-word;
 }
 
+/* Loading animation */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: " ⏳";
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .auth-section {
@@ -183,14 +333,41 @@ button:active {
     h1 {
         font-size: 2rem;
     }
+    
+    .profile-actions {
+        flex-direction: column;
+    }
+    
+    .switch-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
 }
 
-/* Loading animation */
-.loading {
-    opacity: 0.7;
-    pointer-events: none;
+/* Focus styles for accessibility */
+.switch input:focus + .slider {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
 }
 
-.loading button::after {
-    content: " ⏳";
+button:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Animation for smooth transitions */
+.profile-section {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
